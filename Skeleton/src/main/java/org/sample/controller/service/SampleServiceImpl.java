@@ -21,7 +21,7 @@ public class SampleServiceImpl implements SampleService {
 	UserDao userDao;
 	@Autowired
 	AddressDao addDao;
-	//@Autowired
+	@Autowired
 	TeamDao teamDao;
 
 	@Transactional
@@ -57,8 +57,7 @@ public class SampleServiceImpl implements SampleService {
 	}
 
 	@Transactional
-	public TeamForm saveTeamFrom(TeamForm teamForm)
-			throws InvalidUserException {
+	public TeamForm saveForm(TeamForm teamForm) throws InvalidUserException {
 
 		String firstName = teamForm.getTeamName();
 
@@ -80,5 +79,6 @@ public class SampleServiceImpl implements SampleService {
 		return teamForm;
 
 	}
+
 
 }

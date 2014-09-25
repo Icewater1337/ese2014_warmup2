@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.sample.controller.exceptions.InvalidUserException;
 import org.sample.controller.pojos.SignupForm;
+import org.sample.controller.pojos.TeamForm;
 import org.sample.controller.service.SampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,15 +25,17 @@ public class IndexController {
     public ModelAndView index() {
     	ModelAndView model = new ModelAndView("index");
     	model.addObject("signupForm", new SignupForm());    	
+    	model.addObject("teamForm", new TeamForm());
         return model;
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ModelAndView create(@Valid SignupForm signupForm, BindingResult result, RedirectAttributes redirectAttributes) {
+    public ModelAndView create(@Valid SignupForm signupForm, TeamForm teamForm, BindingResult result, RedirectAttributes redirectAttributes) {
     	ModelAndView model;    	
     	if (!result.hasErrors()) {
             try {
             	sampleService.saveFrom(signupForm);
+            	sampleService.saveForm(teamForm);
             	model = new ModelAndView("show");
             } catch (InvalidUserException e) {
             	model = new ModelAndView("index");
