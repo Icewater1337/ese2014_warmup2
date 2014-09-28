@@ -18,7 +18,5 @@ public interface SampleService {
 	
 	public User getUser(Long userId);
 
-	public Team getTeamObject(ArrayList<Team>teams, String string);
-	
 
 }

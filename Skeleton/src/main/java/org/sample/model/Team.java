@@ -18,6 +18,7 @@ public class Team {
 	
 	@Column(name = "teamName",unique=true)
 	private String teamName;
+	
 	private Date date;
 
 	public Long getId() {

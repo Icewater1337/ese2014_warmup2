@@ -42,22 +42,13 @@ public class SampleServiceImpl implements SampleService {
 		Address address = new Address();
 		address.setStreet("TestStreet-foo");
 		
-	//	Team team  = signupForm.getTeamObj();
-		//Long tmpId = team.getId();
-		
-		
 
 		User user = new User();
 		user.setFirstName(signupForm.getFirstName());
 		user.setEmail(signupForm.getEmail());
 		user.setLastName(signupForm.getLastName());
 		user.setAddress(address);
-	//	teamDao.delete(tmpId);
-		//team.setId(null);
-		//user.setTeam(team);
-		user.setTeam(signupForm.getTeamObj().getId());
-		
-
+		user.setTeam_Id(signupForm.getTeamId());
 		user = userDao.save(user); // save object to DB
 
 		// Iterable<Address> addresses = addDao.findAll(); // find all
@@ -81,7 +72,7 @@ public class SampleServiceImpl implements SampleService {
 
 		Team team = new Team();
 		team.setTeamName(teamForm.getTeamName());
-
+		team.setId(teamForm.getId());
 		team.setDate();
 
 		team = teamDao.save(team); // save object to DB
@@ -99,15 +90,17 @@ public class SampleServiceImpl implements SampleService {
 		}
 		
 		return teams;
+		
 	}
 
 	public User getUser(Long userId) {
 		return userDao.findOne(userId);
 	}
 
-	/**
+	/*
+	*
 	 * this method helps to find the Object, since I was not able to get the object itself out from the index.jsp
-	 */
+	 *
 	public Team getTeamObject(ArrayList<Team> teamList, String id) {
 		
 		for ( int i = 0; i < teamList.size(); i++ ) {
@@ -116,6 +109,6 @@ public class SampleServiceImpl implements SampleService {
 				return teamList.get(i);
 		}
 		return null;
-	}
+	}*/
 
 }

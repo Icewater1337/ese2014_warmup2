@@ -4,8 +4,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 
@@ -19,8 +17,7 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
-    
-    private Long team; 
+        private Long team_Id;
     
     @OneToOne(cascade = {CascadeType.ALL})
     private Address address;
@@ -58,16 +55,6 @@ public class User {
         this.email = email;
     }
     
-    
-    @OneToMany
-    @JoinColumn(name="TEAM_ID")
-    public void setTeam(Long team) {
-    	System.out.println("test");
-    	this.team = team;
-    }
-    public Long getTeam() {
-    	return team;
-    }
 
 	public Address getAddress() {
 		return address;
@@ -75,6 +62,14 @@ public class User {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+	
+	public Long getTeam_Id() {
+		return team_Id;
+	}
+	
+	public void setTeam_Id( Long team_Id) {
+		this.team_Id = team_Id;
 	}
 
     

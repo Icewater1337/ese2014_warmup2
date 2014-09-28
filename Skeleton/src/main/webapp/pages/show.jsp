@@ -8,6 +8,9 @@
 
 <h1>Sign Up Complete!</h1>
 
+<div><a href="/Skeleton/">Register another User</a></div>
+<div><a href="/Skeleton/newteam"> Erstelle ein neues Team</a></div>
+
 
 
 <c:import url="template/footer.jsp" />

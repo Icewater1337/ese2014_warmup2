@@ -33,7 +33,7 @@ public class IndexController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index() {
 		
-				
+		ArrayList<Team> list = sampleService.getTeams();	
 		ModelAndView model = new ModelAndView("index");
 		model.addObject("signupForm", new SignupForm());
 		model.addObject("teams", sampleService.getTeams());
@@ -69,7 +69,7 @@ public class IndexController {
 			try {
 				//Team teamObject = sampleService.getTeamObject(sampleService.getTeams(), signupForm.getTeamName());
 				//teamObject.setId(null);
-				signupForm.setTeamObj(sampleService.getTeamObject(sampleService.getTeams(), signupForm.getTeamName()));
+				//signupForm.setTeamObj(sampleService.getTeamObject(sampleService.getTeams(), signupForm.getTeamName()));
 				sampleService.saveFrom(signupForm);
 				model = new ModelAndView("show");
 			} catch (InvalidUserException e) {
@@ -89,6 +89,12 @@ public class IndexController {
 		ModelAndView model;
 		if (!result.hasErrors()) {
 			try {
+				ArrayList<Team> teams = sampleService.getTeams();
+				if( teams.size() < 1)
+					teamForm.setId((long) 1);
+				else {
+				teamForm.setId((long) (sampleService.getTeams().size()+1));
+				}
 				sampleService.saveFrom(teamForm);
 				model = new ModelAndView("show");
 			} catch (InvalidUserException e) {

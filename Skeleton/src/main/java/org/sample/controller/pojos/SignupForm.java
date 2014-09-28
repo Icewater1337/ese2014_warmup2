@@ -11,15 +11,13 @@ public class SignupForm {
     private Long id;
     private String firstName;
     private String lastName;
-    private String teamName;
-    private Team teamObj;
-
+   
 
     @NotNull
     @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", 
     message = "Must be valid email address")
     private String email;
-	private Long team;
+	private Long teamId;
 
     public String getFirstName() {
         return firstName;
@@ -53,20 +51,12 @@ public class SignupForm {
         this.id = id;
     }
     
-    public String getTeamName() {
-    	return teamName;
+    public Long getTeamId() {
+    	return teamId;
     }
     
-    public void setTeamName( String teamName) {
-    	this.teamName = teamName;
+    public void setTeamId( Long teamId) {
+    	this.teamId = teamId;
     }
     
-           
-    public void setTeamObj( Team team) {
-    	this.teamObj = team;
-    }
-    
-    public Team getTeamObj() {
-    	return teamObj;
-    }
 }

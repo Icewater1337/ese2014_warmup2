@@ -60,9 +60,9 @@
 		<div class="control-group<c:if test="${not empty teamNameErrors}"> error</c:if>">
 			<label class="control-label" for="field-teamName">Team Name</label>
 			<div class="controls">
-				<form:select path="teamName">
+				<form:select path="teamId">
 					<c:forEach items="${teams}" var="teams">
-						<option value="${teams.teamName}">
+						<option value="${teams.id}">
 							<c:out value="${teams.teamName}" />
 						</option>
 					</c:forEach>
