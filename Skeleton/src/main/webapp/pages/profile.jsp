@@ -23,7 +23,7 @@
 	<label class="control-label" for="field-email"><b>E-mail:</b><c:out value="${user.email}" /></label>
 	
 	
-	<label class="control-label" for="field-teamName"><b>Team:</b>	<c:out value="${user.team.teamName}" /></label>
+	<label class="control-label" for="field-teamName"><b>Team:</b>	<c:out value="${usersTeam.teamName}" /></label>
 
 	
 	

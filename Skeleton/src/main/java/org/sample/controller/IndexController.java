@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.sample.controller.exceptions.InvalidUserException;
@@ -54,10 +55,11 @@ public class IndexController {
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public ModelAndView showProfileByUserId(
 			@RequestParam(value = "userId", required = true) Long userId,
-			HttpServletRequest request, HttpServletResponse response) {
+			HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 
 		ModelAndView model = new ModelAndView("profile");
 		model.addObject("user", sampleService.getUser(userId));
+		model.addObject("usersTeam", sampleService.getTeamQuery(sampleService.getUser(userId).getTeam_Id()));
 		return model;
 	}
 
@@ -115,3 +117,4 @@ public class IndexController {
 	}
 
 }
+

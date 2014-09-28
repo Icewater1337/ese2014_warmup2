@@ -2,6 +2,8 @@ package org.sample.controller.service;
 
 import java.util.ArrayList;
 
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
 import org.sample.controller.exceptions.InvalidUserException;
 import org.sample.controller.pojos.SignupForm;
 import org.sample.controller.pojos.TeamForm;
@@ -95,6 +97,13 @@ public class SampleServiceImpl implements SampleService {
 
 	public User getUser(Long userId) {
 		return userDao.findOne(userId);
+	}
+
+	public Team getTeamQuery(Long team_Id) {
+		return teamDao.findOne(team_Id);
+
+		          
+		//Session.createSQLQuery("SELECT * FROM CATS").list();
 	}
 
 	/*

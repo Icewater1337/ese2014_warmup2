@@ -17,7 +17,7 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
-        private Long team_Id;
+    private Long team_Id;
     
     @OneToOne(cascade = {CascadeType.ALL})
     private Address address;

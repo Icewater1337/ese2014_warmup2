@@ -18,5 +18,7 @@ public interface SampleService {
 	
 	public User getUser(Long userId);
 
+	public Team getTeamQuery(Long team_Id);
+
 
 }
