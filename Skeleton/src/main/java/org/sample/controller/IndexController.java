@@ -67,8 +67,9 @@ public class IndexController {
 		ModelAndView model;
 		if (!result.hasErrors()) {
 			try {
-				Team teamObject = sampleService.getTeamObject(sampleService.getTeams(), signupForm.getTeamName());
-				signupForm.setTeamObj(teamObject);
+				//Team teamObject = sampleService.getTeamObject(sampleService.getTeams(), signupForm.getTeamName());
+				//teamObject.setId(null);
+				signupForm.setTeamObj(sampleService.getTeamObject(sampleService.getTeams(), signupForm.getTeamName()));
 				sampleService.saveFrom(signupForm);
 				model = new ModelAndView("show");
 			} catch (InvalidUserException e) {
