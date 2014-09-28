@@ -17,14 +17,12 @@ public class TeamForm {
 	public void setTeamName(String teamName) {
 		this.teamName = teamName;
 	}
-	/*
-	public void setDate(int day, int month, int year) {
-		date = new Date(day, month, year);
+	
+	public Date getDate () {
+		return date;
 	}
 	
-	public Date getDate() {
-		return date;
-	} */
+
 	
 	public long getId () {
 		return id;

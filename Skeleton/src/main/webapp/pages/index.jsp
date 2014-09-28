@@ -16,20 +16,18 @@
 	<fieldset>
 		<legend>Enter Your Information</legend>
 
-		<c:set var="emailErrors">
-			<form:errors path="email" />
-		</c:set>
-		<div
-			class="control-group<c:if test="${not empty emailErrors}"> error</c:if>"
-			dir="rtl">
-			<label class="control-label" for="field-email">Email</label>
 
-			<div class="controls">
-				<form:input path="email" id="field-email" tabindex="1"
-					maxlength="45" placeholder="Email" />
-				<form:errors path="email" cssClass="help-inline" element="span" />
-			</div>
-		</div>
+	       
+        <c:set var="emailErrors"><form:errors path="email"/></c:set>
+        <div class="control-group<c:if test="${not empty emailErrors}"> error</c:if>">
+            <label class="control-label" for="field-email">Email</label>
+
+            <div class="controls">
+                <form:input path="email" id="field-email" tabindex="1" maxlength="45" placeholder="Email"/>
+                <form:errors path="email" cssClass="help-inline" element="span"/>
+            </div>
+        </div>
+
 
 
 		<c:set var="firstNameErrors">
@@ -65,12 +63,13 @@
 				<form:select path="teamName">
 					<c:forEach items="${teams}" var="teams">
 						<option value="${teams.teamName}">
-							<c:out value="${teams.teamName }" />
+							<c:out value="${teams.teamName}" />
 						</option>
 					</c:forEach>
 				</form:select>
-
+				<a href="/Skeleton/newteam"> Erstelle ein neues Team</a>
 			</div>
+			
 		</div>
 
 		<div class="form-actions">

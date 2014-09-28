@@ -1,6 +1,7 @@
 package org.sample.model;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,7 +15,8 @@ public class Team {
 	@Id
 	@GeneratedValue
 	private Long id;
-
+	
+	@Column(name = "teamName",unique=true)
 	private String teamName;
 	private Date date;
 
@@ -33,7 +35,7 @@ public class Team {
 	public void setTeamName(String teamName) {
 		this.teamName = teamName;
 	}
-
+	
 	public Date getDate() {
 		return date;
 	}

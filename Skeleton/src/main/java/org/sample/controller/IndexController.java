@@ -11,6 +11,7 @@ import org.sample.controller.exceptions.InvalidUserException;
 import org.sample.controller.pojos.SignupForm;
 import org.sample.controller.pojos.TeamForm;
 import org.sample.controller.service.SampleService;
+import org.sample.model.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -31,10 +32,10 @@ public class IndexController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index() {
-
+		
+				
 		ModelAndView model = new ModelAndView("index");
 		model.addObject("signupForm", new SignupForm());
-		// ArrayList<Team> teams = new ArrayList<Team>();
 		model.addObject("teams", sampleService.getTeams());
 		return model;
 
@@ -66,6 +67,8 @@ public class IndexController {
 		ModelAndView model;
 		if (!result.hasErrors()) {
 			try {
+				Team teamObject = sampleService.getTeamObject(sampleService.getTeams(), signupForm.getTeamName());
+				signupForm.setTeamObj(teamObject);
 				sampleService.saveFrom(signupForm);
 				model = new ModelAndView("show");
 			} catch (InvalidUserException e) {

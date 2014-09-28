@@ -29,6 +29,7 @@ public class SampleServiceImpl implements SampleService {
 	@Transactional
 	public SignupForm saveFrom(SignupForm signupForm)
 			throws InvalidUserException {
+		
 
 		String firstName = signupForm.getFirstName();
 
@@ -40,13 +41,19 @@ public class SampleServiceImpl implements SampleService {
 
 		Address address = new Address();
 		address.setStreet("TestStreet-foo");
+		
+		// set id to null, to prevent error.
+		Team team = signupForm.getTeamObj();
+		team.setId(null);
+		
+		
 
 		User user = new User();
 		user.setFirstName(signupForm.getFirstName());
 		user.setEmail(signupForm.getEmail());
 		user.setLastName(signupForm.getLastName());
 		user.setAddress(address);
-		user.setTeam(signupForm.getTeamName());
+		user.setTeam(team);
 
 		user = userDao.save(user); // save object to DB
 
@@ -93,6 +100,19 @@ public class SampleServiceImpl implements SampleService {
 
 	public User getUser(Long userId) {
 		return userDao.findOne(userId);
+	}
+
+	/**
+	 * this method helps to find the Object, since I was not able to get the object itself out from the index.jsp
+	 */
+	public Team getTeamObject(ArrayList<Team> teamList, String id) {
+		String test = "";
+		for ( int i = 0; i < teamList.size(); i++ ) {
+			test = teamList.get(i).getTeamName();
+			if( teamList.get(i).getTeamName().equals(id))
+				return teamList.get(i);
+		}
+		return null;
 	}
 
 }
