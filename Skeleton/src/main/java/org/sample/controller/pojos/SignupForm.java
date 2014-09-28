@@ -9,7 +9,7 @@ public class SignupForm {
     private Long id;
     private String firstName;
     private String lastName;
-    private String team;
+    private String teamName;
 
 
     @NotNull
@@ -47,6 +47,14 @@ public class SignupForm {
 
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    public String getTeamName() {
+    	return teamName;
+    }
+    
+    public void setTeamName( String teamName) {
+    	this.teamName = teamName;
     }
     /*
     public void setTeam( String team) {

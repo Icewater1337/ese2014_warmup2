@@ -1,5 +1,7 @@
 package org.sample.controller.service;
 
+import java.util.ArrayList;
+
 import org.sample.controller.exceptions.InvalidUserException;
 import org.sample.controller.pojos.SignupForm;
 import org.sample.controller.pojos.TeamForm;
@@ -44,6 +46,7 @@ public class SampleServiceImpl implements SampleService {
 		user.setEmail(signupForm.getEmail());
 		user.setLastName(signupForm.getLastName());
 		user.setAddress(address);
+		user.setTeam(signupForm.getTeamName());
 
 		user = userDao.save(user); // save object to DB
 
@@ -57,28 +60,39 @@ public class SampleServiceImpl implements SampleService {
 	}
 
 	@Transactional
-	public TeamForm saveForm(TeamForm teamForm) throws InvalidUserException {
+	public TeamForm saveFrom(TeamForm teamForm) throws InvalidUserException {
 
-		String firstName = teamForm.getTeamName();
+		String teamName = teamForm.getTeamName();
 
-		if (!StringUtils.isEmpty(firstName)
-				&& "ESE".equalsIgnoreCase(firstName)) {
+		if (!StringUtils.isEmpty(teamName) && "ESE".equalsIgnoreCase(teamName)) {
 			throw new InvalidUserException("Sorry, ESE is not a valid name"); // throw
 																				// exception
 		}
 
 		Team team = new Team();
 		team.setTeamName(teamForm.getTeamName());
-		
-		team.setDate();
-		
-		team = teamDao.save(team); // save object to DB
 
-		
+		team.setDate();
+
+		team = teamDao.save(team); // save object to DB
 
 		return teamForm;
 
 	}
 
+	public ArrayList<Team> getTeams() {
+     
+		Iterable<Team> teamsIter = teamDao.findAll();
+		ArrayList<Team> teams = new ArrayList<Team>();
+		for ( Team t : teamsIter) {
+			teams.add(t);
+		}
+		
+		return teams;
+	}
+
+	public User getUser(Long userId) {
+		return userDao.findOne(userId);
+	}
 
 }

@@ -17,9 +17,11 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
+	private String teamName; 
     
     @OneToOne(cascade = {CascadeType.ALL})
-    private Address address; 
+    private Address address;
+
     
     public Long getId() {
         return id;
@@ -51,6 +53,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    public String getTeam() {
+    	return teamName;
+    }
+    
+    public void setTeam(String teamName) {
+    	this.teamName = teamName;
     }
 
 	public Address getAddress() {
