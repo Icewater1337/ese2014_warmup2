@@ -67,7 +67,7 @@
 						</option>
 					</c:forEach>
 				</form:select>
-				<a href="/Skeleton/newteam"> Erstelle ein neues Team</a>
+				<a href="/Skeleton/newteam"> Register a new Team</a>
 			</div>
 			
 		</div>

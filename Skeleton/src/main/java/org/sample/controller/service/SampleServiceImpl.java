@@ -74,7 +74,7 @@ public class SampleServiceImpl implements SampleService {
 
 		Team team = new Team();
 		team.setTeamName(teamForm.getTeamName());
-		team.setId(teamForm.getId());
+		//team.setId(teamForm.getId());
 		team.setDate();
 
 		team = teamDao.save(team); // save object to DB
