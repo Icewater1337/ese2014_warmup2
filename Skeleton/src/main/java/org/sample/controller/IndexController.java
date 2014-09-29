@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.sample.controller.exceptions.InvalidTeamException;
 import org.sample.controller.exceptions.InvalidUserException;
 import org.sample.controller.pojos.SignupForm;
 import org.sample.controller.pojos.TeamForm;
@@ -99,8 +100,8 @@ public class IndexController {
 				}
 				sampleService.saveFrom(teamForm);
 				model = new ModelAndView("show");
-			} catch (InvalidUserException e) {
-				model = new ModelAndView("index");
+			} catch (InvalidTeamException e) {
+				model = new ModelAndView("new-team");
 				model.addObject("page_error", e.getMessage());
 			}
 		} else {
