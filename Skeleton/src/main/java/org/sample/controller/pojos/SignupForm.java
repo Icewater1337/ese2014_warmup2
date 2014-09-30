@@ -18,6 +18,7 @@ public class SignupForm {
     message = "Must be valid email address")
     private String email;
 	private Long teamId;
+	private Team team;
 
     public String getFirstName() {
         return firstName;
@@ -58,5 +59,13 @@ public class SignupForm {
     public void setTeamId( Long teamId) {
     	this.teamId = teamId;
     }
+
+	public Team getTeam() {
+		return team;
+	}
+	
+	public void setTeam(Team team) {
+		this.team = team;
+	}
     
 }

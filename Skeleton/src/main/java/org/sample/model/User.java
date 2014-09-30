@@ -4,6 +4,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 
@@ -17,7 +18,9 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
-    private Long team_Id;
+    
+    @ManyToOne
+    private Team team;
     
     @OneToOne(cascade = {CascadeType.ALL})
     private Address address;
@@ -64,12 +67,12 @@ public class User {
 		this.address = address;
 	}
 	
-	public Long getTeam_Id() {
-		return team_Id;
+	public Team getTeam() {
+		return team;
 	}
 	
-	public void setTeam_Id( Long team_Id) {
-		this.team_Id = team_Id;
+	public void setTeam(Team team) {
+		this.team = team;
 	}
 
     

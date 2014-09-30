@@ -21,5 +21,7 @@ public interface SampleService {
 
 	public Team getTeamQuery(Long team_Id);
 
+	public Team getTeamObject(ArrayList<Team> teams, Long teamId);
+
 
 }

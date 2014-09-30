@@ -31,7 +31,6 @@ public class SampleServiceImpl implements SampleService {
 	@Transactional
 	public SignupForm saveFrom(SignupForm signupForm)
 			throws InvalidUserException {
-		
 
 		String firstName = signupForm.getFirstName();
 
@@ -43,14 +42,14 @@ public class SampleServiceImpl implements SampleService {
 
 		Address address = new Address();
 		address.setStreet("TestStreet-foo");
-		
 
 		User user = new User();
 		user.setFirstName(signupForm.getFirstName());
 		user.setEmail(signupForm.getEmail());
 		user.setLastName(signupForm.getLastName());
 		user.setAddress(address);
-		user.setTeam_Id(signupForm.getTeamId());
+		user.setTeam(signupForm.getTeam());
+
 		user = userDao.save(user); // save object to DB
 
 		// Iterable<Address> addresses = addDao.findAll(); // find all
@@ -74,11 +73,11 @@ public class SampleServiceImpl implements SampleService {
 
 		Team team = new Team();
 		team.setTeamName(teamForm.getTeamName());
-		//team.setId(teamForm.getId());
+		// team.setId(teamForm.getId());
 		team.setDate();
 
 		team = teamDao.save(team); // save object to DB
-		
+
 		teamForm.setId(team.getId());
 
 		return teamForm;
@@ -86,15 +85,15 @@ public class SampleServiceImpl implements SampleService {
 	}
 
 	public ArrayList<Team> getTeams() {
-     
+
 		Iterable<Team> teamsIter = teamDao.findAll();
 		ArrayList<Team> teams = new ArrayList<Team>();
-		for ( Team t : teamsIter) {
+		for (Team t : teamsIter) {
 			teams.add(t);
 		}
-		
+
 		return teams;
-		
+
 	}
 
 	public User getUser(Long userId) {
@@ -104,22 +103,20 @@ public class SampleServiceImpl implements SampleService {
 	public Team getTeamQuery(Long team_Id) {
 		return teamDao.findOne(team_Id);
 
-		          
-		//Session.createSQLQuery("SELECT * FROM CATS").list();
+		// Session.createSQLQuery("SELECT * FROM CATS").list();
 	}
 
-	/*
-	*
-	 * this method helps to find the Object, since I was not able to get the object itself out from the index.jsp
-	 *
-	public Team getTeamObject(ArrayList<Team> teamList, String id) {
-		
-		for ( int i = 0; i < teamList.size(); i++ ) {
-			if( teamList.get(i).getTeamName().equals(id))
-				//teamDao.delete((long) i+1);
+	/**
+	 * helper method to get the corresponding team object by its Id.
+	 */
+	public Team getTeamObject(ArrayList<Team> teamList, Long id) {
+
+		for (int i = 0; i < teamList.size(); i++) {
+			if (teamList.get(i).getId() == id)
+				// teamDao.delete((long) i+1);
 				return teamList.get(i);
 		}
 		return null;
-	}*/
+	}
 
 }

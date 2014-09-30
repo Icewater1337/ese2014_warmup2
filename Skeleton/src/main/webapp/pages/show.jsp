@@ -8,8 +8,8 @@
 
 <h1>Sign Up Complete!</h1>
 
-<div><a href="/Skeleton/">Register another User</a></div>
-<div><a href="/Skeleton/newteam"> Erstelle ein neues Team</a></div>
+<div><a href="/Skeleton/">Register a new user</a></div>
+<div><a href="/Skeleton/newteam"> Register a new team</a></div>
 
 
 

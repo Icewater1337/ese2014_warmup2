@@ -50,8 +50,7 @@ public class IndexController {
 		return model;
 	}
 
-	// @RequestMapping(value = "/profile/{userId}", method = RequestMethod.GET)
-	// @PathVariable Long userId
+
 	// profile.jsp doesnt work. 
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public ModelAndView showProfileByUserId(
@@ -61,19 +60,11 @@ public class IndexController {
 		
 		ModelAndView model = new ModelAndView("profile");
 		model.addObject("user", sampleService.getUser(userId));
-		model.addObject("usersTeam", sampleService.getTeamQuery(sampleService.getUser(userId).getTeam_Id()));
+		model.addObject("usersTeam", sampleService.getTeamQuery(sampleService.getUser(userId).getTeam().getId()));
 		return model;
 	} 
-	/*
-	@RequestMapping(value = " /profile.jsp?userId={userId}", method=RequestMethod.GET)
-	public ModelAndView showProfileByUserId(@PathVariable Long userId, HttpServletRequest request, HttpServletResponse response, HttpSession session){
-
-		ModelAndView model = new ModelAndView("profile");
-		model.addObject("user", sampleService.getUser(userId));
-		model.addObject("usersTeam", sampleService.getTeamQuery(sampleService.getUser(userId).getTeam_Id()));
-		return model;
-			} */
-
+	
+	
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public ModelAndView create(@Valid SignupForm signupForm,
 			BindingResult result, RedirectAttributes redirectAttributes) {
@@ -82,7 +73,7 @@ public class IndexController {
 			try {
 				//Team teamObject = sampleService.getTeamObject(sampleService.getTeams(), signupForm.getTeamName());
 				//teamObject.setId(null);
-				//signupForm.setTeamObj(sampleService.getTeamObject(sampleService.getTeams(), signupForm.getTeamName()));
+				signupForm.setTeam(sampleService.getTeamObject((sampleService.getTeams()), (signupForm.getTeamId())));
 				sampleService.saveFrom(signupForm);
 				model = new ModelAndView("show");
 			} catch (InvalidUserException e) {
