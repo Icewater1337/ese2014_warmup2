@@ -52,17 +52,27 @@ public class IndexController {
 
 	// @RequestMapping(value = "/profile/{userId}", method = RequestMethod.GET)
 	// @PathVariable Long userId
-
+	// profile.jsp doesnt work. 
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public ModelAndView showProfileByUserId(
 			@RequestParam(value = "userId", required = true) Long userId,
 			HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		
+		ModelAndView model = new ModelAndView("profile");
+		model.addObject("user", sampleService.getUser(userId));
+		model.addObject("usersTeam", sampleService.getTeamQuery(sampleService.getUser(userId).getTeam_Id()));
+		return model;
+	} 
+	/*
+	@RequestMapping(value = " /profile.jsp?userId={userId}", method=RequestMethod.GET)
+	public ModelAndView showProfileByUserId(@PathVariable Long userId, HttpServletRequest request, HttpServletResponse response, HttpSession session){
 
 		ModelAndView model = new ModelAndView("profile");
 		model.addObject("user", sampleService.getUser(userId));
 		model.addObject("usersTeam", sampleService.getTeamQuery(sampleService.getUser(userId).getTeam_Id()));
 		return model;
-	}
+			} */
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public ModelAndView create(@Valid SignupForm signupForm,

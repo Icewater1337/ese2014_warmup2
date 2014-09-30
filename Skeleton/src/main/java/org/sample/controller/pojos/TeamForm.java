@@ -22,7 +22,6 @@ public class TeamForm {
 		return date;
 	}
 	
-
 	
 	public long getId () {
 		return id;

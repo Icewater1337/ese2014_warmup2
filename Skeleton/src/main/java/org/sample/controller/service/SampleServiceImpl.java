@@ -78,6 +78,8 @@ public class SampleServiceImpl implements SampleService {
 		team.setDate();
 
 		team = teamDao.save(team); // save object to DB
+		
+		teamForm.setId(team.getId());
 
 		return teamForm;
 

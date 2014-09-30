@@ -26,10 +26,6 @@
 	<label class="control-label" for="field-teamName"><b>Team:</b>	<c:out value="${usersTeam.teamName}" /></label>
 
 	
-	
-
-
-
 
 
 <c:import url="template/footer.jsp" />
